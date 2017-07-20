@@ -1,5 +1,8 @@
 <template>
   <div class="404">
+      <div class="header">
+        <img src="../assets/logo.png">
+      </div>
     <h1>{{ msg }}</h1>
   </div>
 </template>

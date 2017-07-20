@@ -1,5 +1,8 @@
 <template>
   <div class="hello">
+      <div class="header">
+        <img src="../assets/logo.png">
+      </div>
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <ul>
