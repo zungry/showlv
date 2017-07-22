@@ -1,0 +1,9 @@
+{
+  "name": "showlv-server",
+  "version": "0.0.1",
+  "description": "showlv first version",
+  "dependencies": {
+      "express": "^4.14.0",
+      "mysql": "latest"
+  }
+}
