@@ -9,11 +9,11 @@
       </div>
       <div class="-name">
         <label>用户名：</label>
-        <input type="text" v-model="name" placeholder="10字以内">
+        <input type="text" v-model="mobile" placeholder="10字以内">
       </div>
       <div class="-weichat">
         <label>密码：</label>
-        <input type="text" v-model="weichat" placeholder="方便私聊（选填）">
+        <input type="text" v-model="passwd" placeholder="方便私聊（选填）">
       </div>
       <div class="-login">
         <span class="-btn" @click="login()">登录</span>
@@ -24,46 +24,59 @@
     </div>
     <div class="foot">
       <span>
-              你说，远方有什么？</span>
-      
+        你说，远方有什么？</span>
   
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'Login',
-    data() {
-      return {
-        name: '',
-        color: '',
-        weichat: ''
-      }
-    },
-    methods: {
-      register(){
-        this.$router.push('/register')
-      }
+import Vue from 'vue';
+export default {
+  name: 'Login',
+  data() {
+    return {
+      mobile: '',
+      color: '',
+      passwd: ''
     }
-    // ready(){
-  
-    // },
-    // methods:{
-    //   send(msg){
-    //     CHAT.submit(msg)
-    //     this.msg=''
-    //     console.log(CHAT)
-    //   },
-    //   login(){
-    //     if (!this.name.trim()) {
-    //       alert("昵称不能为空！")
-    //       return
-    //     }
-    //     this.$router.go('/')
-    //   }
-    // },
+  },
+  methods: {
+    register() {
+      this.$router.push('/register')
+    },
+    login() {
+      var that = this;
+      var url = '/user?mobile=' + this.mobile + '&passwd=' + this.passwd
+      Vue.http.get(url).then(response => {
+      if (response.data.code == 0) {
+        this.$router.push('/');
+      }else {
+        alert("手机号或密码错误");
+      }
+    }, response => {
+        alert("err");
+      })
+    }
   }
+  // ready(){
+
+  // },
+  // methods:{
+  //   send(msg){
+  //     CHAT.submit(msg)
+  //     this.msg=''
+  //     console.log(CHAT)
+  //   },
+  //   login(){
+  //     if (!this.name.trim()) {
+  //       alert("昵称不能为空！")
+  //       return
+  //     }
+  //     this.$router.go('/')
+  //   }
+  // },
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
