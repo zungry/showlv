@@ -6,7 +6,7 @@ app.use(morgan('dev')); // Log every request to console
 
 var mysql = require('mysql');
 var dbConfig = require('./db/DBConfig');
-var userSQL = require('./db/Usersql');
+var userSQL = require('./db/UserSQL');
 var pool = mysql.createPool(dbConfig.mysql);
 
 // 设置/routes/index文件为总的路由控制文件

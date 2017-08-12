@@ -8,7 +8,7 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 var dbConfig = require('../db/DBConfig');
-var userSQL = require('../db/Usersql');
+var userSQL = require('../db/UserSQL');
 var pool = mysql.createPool(dbConfig.mysql);
 
 // 响应一个JSON数据
