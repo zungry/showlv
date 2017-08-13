@@ -149,6 +149,8 @@ a {
     line-height: 30px;
     text-align: left;
 }
-
+.weui_tabbar {
+  position: fixed;
+}
 
 </style>

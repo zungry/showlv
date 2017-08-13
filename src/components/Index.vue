@@ -61,11 +61,13 @@
     </div>
   
     <Footer></Footer>
+    <foot> </foot>
       
   </div>
 </template>
 
 <script>
+import foot from '../page/footer'
 import Footer from './Footer'
 export default {
   name: 'Index',
@@ -75,6 +77,7 @@ export default {
     }
   },
   components:{
+    foot,
     Footer
   }
 }
@@ -272,5 +275,8 @@ li {
 
 a {
   color: #42b983;
+}
+.weui_tabbar {
+  position: fixed;
 }
 </style>

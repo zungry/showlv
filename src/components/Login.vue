@@ -22,18 +22,19 @@
         <span class="-btn" @click="register()">注册</span>
       </div>
     </div>
-    <div class="foot">
-      <span>
-        你说，远方有什么？</span>
-  
-    </div>
+    <foot></foot>
   </div>
+  
 </template>
 
 <script>
 import Vue from 'vue';
+import foot from '../page/footer'
 export default {
   name: 'Login',
+  components:{
+    foot
+  },
   data() {
     return {
       mobile: '',
