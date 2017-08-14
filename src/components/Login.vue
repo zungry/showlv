@@ -2,6 +2,7 @@
   <div class="login-wrapper" transition="loginslide">
     <div class="header">
       <img src="../assets/logo.png">
+      {{this.$store.state.count}}
     </div>
     <div class="body">
       <div class="-title">
@@ -9,11 +10,11 @@
       </div>
       <div class="-name">
         <label>用户名：</label>
-        <input type="text" v-model="mobile" placeholder="10字以内">
+        <input type="text" v-model="mobile" placeholder="11 number">
       </div>
       <div class="-weichat">
         <label>密码：</label>
-        <input type="text" v-model="passwd" placeholder="方便私聊（选填）">
+        <input type="text" v-model="passwd" placeholder="password">
       </div>
       <div class="-login">
         <span class="-btn" @click="login()">登录</span>
@@ -30,6 +31,7 @@
 <script>
 import Vue from 'vue';
 import foot from '../page/footer'
+import {sendLogin} from '../service/getData'
 export default {
   name: 'Login',
   components:{
@@ -37,16 +39,25 @@ export default {
   },
   data() {
     return {
+      userInfo: '',
       mobile: '',
       color: '',
       passwd: ''
+    }
+  },
+  computed: {
+    //判断手机号码
+    rightPhoneNumber: function () {
+      return /^1\d{10}$/gi.test(this.phoneNumber)
     }
   },
   methods: {
     register() {
       this.$router.push('/register')
     },
-    login() {
+    async login() {
+      this.userInfo = await sendLogin(this.mobileCode, this.phoneNumber, this.validate_token);
+      console.log("test");
       var that = this;
       var url = '/user?mobile=' + this.mobile + '&passwd=' + this.passwd
       Vue.http.get(url).then(response => {
@@ -146,6 +157,9 @@ export default {
       margin: 10px auto;
       color: #fff;
       font-weight: bolder;
+    }
+    .right_phone_number{
+      background-color: #4cd964;
     }
   }
 </style>
