@@ -23,6 +23,7 @@
         <span class="-btn" @click="register()">注册</span>
       </div>
     </div>
+        <heads> </heads>
     <foot></foot>
   </div>
   
@@ -32,10 +33,12 @@
 import Vue from 'vue';
 import foot from '../page/footer'
 import {sendLogin} from '../service/getData'
+import heads from './header/head'
 export default {
   name: 'Login',
   components:{
-    foot
+    foot,
+    heads
   },
   data() {
     return {
@@ -101,6 +104,9 @@ export default {
     bottom: 0;
   }
   
+  .header {
+    margin: 40px;
+  }
   .body {
     display: flex;
     flex-direction: column;
