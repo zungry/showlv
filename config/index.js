@@ -27,13 +27,14 @@ module.exports = {
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
+    proxypath: 'http://127.0.0.1:3000',
     proxyTable: {
       '/user': {
         target: 'http://127.0.0.1:3000',
         changeOrigin: true,
         pathRewrite: {
           '^/user': '/user'
-        }
+        },
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

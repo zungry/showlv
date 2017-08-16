@@ -2,7 +2,7 @@
   <div class="login-wrapper" transition="loginslide">
     <div class="header">
       <img src="../assets/logo.png">
-      {{this.$store.state.count}}
+      {{this.$store.state.userInfo}}
     </div>
     <div class="body">
       <div class="-title">
@@ -34,6 +34,7 @@ import Vue from 'vue';
 import foot from '../page/footer'
 import {sendLogin} from '../service/getData'
 import heads from './header/head'
+import {mapState, mapMutations} from 'vuex'
 export default {
   name: 'Login',
   components:{
@@ -44,23 +45,30 @@ export default {
     return {
       userInfo: '',
       mobile: '',
-      color: '',
       passwd: ''
     }
   },
   computed: {
+
     //判断手机号码
     rightPhoneNumber: function () {
       return /^1\d{10}$/gi.test(this.phoneNumber)
     }
   },
   methods: {
+    ...mapMutations([
+      'RECORD_USERINFO',
+    ]),
+
     register() {
       this.$router.push('/register')
     },
     async login() {
-      this.userInfo = await sendLogin(this.mobileCode, this.phoneNumber, this.validate_token);
-      console.log("test");
+      this.userInfo = await sendLogin(this.mobile, this.passwd);
+      console.log(this.userInfo.username);
+      this.RECORD_USERINFO(this.userInfo);
+      this.$router.go(-1);
+    /*
       var that = this;
       var url = '/user?mobile=' + this.mobile + '&passwd=' + this.passwd
       Vue.http.get(url).then(response => {
@@ -72,6 +80,7 @@ export default {
     }, response => {
         alert("err");
       })
+      */
     }
   }
   // ready(){

@@ -4,8 +4,15 @@
       <div class="widthCC">
         <span>
           您好，欢迎来到授律
+          <span v-if="userInfo">
+            {{userInfo.username}}
+          </span>
+          <span v-else>
           <a>免费注册</a>
-          <a>登录</a>
+          <router-link :to="userInfo? '/':'/login'" class="head_login">
+              登录
+          </router-link>
+          </span>
         </span>
         <p>
           <a>首页</a>
@@ -69,12 +76,18 @@
 <script>
 import foot from '../page/footer'
 import Footer from './Footer'
+import {mapState, mapMutations} from 'vuex'
 export default {
   name: 'Index',
   data() {
     return {
       msg: 'Welcome to Showlv'
     }
+  },
+  computed: {
+    ...mapState([
+      'userInfo',
+    ])
   },
   components:{
     foot,

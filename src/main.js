@@ -4,20 +4,11 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import App from './App'
 import router from './router'
+import store from './store/'
 import VueResource from 'vue-resource';
 Vue.use(VueResource);
 Vue.use(Vuex)
 Vue.config.productionTip = false
-
-const store = new Vuex.Store({
-  state: {
-    count: 0
-  },
-  mutations: {
-  	increment: state => state.count++,
-    decrement: state => state.count--
-  }
-})
 
 /* eslint-disable no-new */
 new Vue({
