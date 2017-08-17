@@ -3,17 +3,23 @@
       <div class="header">
         <img src="../assets/logo.png">
       </div>
+      <test></test>
     <h1>{{ msg }}</h1>
   </div>
 </template>
 
 <script>
+import test from '../page/test';
+import Vue from 'vue';
 export default {
   name: 'NotFound',
   data () {
     return {
       msg: '404'
     }
+  },
+  components: {
+    test
   }
 }
 </script>
